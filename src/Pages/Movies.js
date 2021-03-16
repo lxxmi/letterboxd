@@ -21,7 +21,6 @@ export const Movies = () => {
         return GenreIds.reduce((acc, curr) => acc + "," + curr);
       };
       const genreList = useGenre(selectedGenres)
-      console.log(genreList)
 
     const fetchMovies = async ()=>{
         const {data} = await axios.get(
@@ -32,7 +31,6 @@ export const Movies = () => {
     }
     useEffect(()=>{
         fetchMovies()
-        console.log('eff')
     },[page, genreList])
 
     return (

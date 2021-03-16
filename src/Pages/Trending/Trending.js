@@ -35,7 +35,7 @@ export const Trending = () => {
                 ))}
             </div>
             {numOfPages > 1 &&
-                <PaginationBar setPage={setPage} />
+                <PaginationBar numOfPages='10' setPage={setPage} />
             }
         </div>
     )
