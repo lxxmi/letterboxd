@@ -1,22 +1,25 @@
 import { Typography } from '@material-ui/core';
 import axios from 'axios'
 import {useState, useEffect} from 'react'
+import { PaginationBar } from '../../components/Pagination/PaginationBar';
 import { MovieCard } from './../../components/MovieCard/MovieCard';
-import useStyles from './styles'
+import useStyles from './../styles'
 
 export const Trending = () => {
-    const [results, setResults] = useState([])
     const {trendingGrid,pageTitle} = useStyles()
+    const[numOfPages, setNumOfPages] = useState()
+    const [results, setResults] = useState([])
+    const [page, setPage ] = useState(1)
     const fetchTrending = async ()=>{
-        const {data} = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`)
+        const {data} = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`)
         setResults(data.results)
     }
     useEffect(() => {
         fetchTrending()
-    }, [])
+    }, [page])
 
     return (
-        <div>
+        <div >
             <Typography variant='body' component='h2' className={pageTitle}>Trending</Typography>
             <div className={trendingGrid}>
                 {results && results.map(m => (
@@ -31,6 +34,9 @@ export const Trending = () => {
                     />
                 ))}
             </div>
+            {numOfPages > 1 &&
+                <PaginationBar setPage={setPage} />
+            }
         </div>
     )
 } 

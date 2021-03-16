@@ -4,6 +4,16 @@ export default makeStyles((theme)=>({
     header:{
         backgroundColor: "#400CCC",
     },
+    scrollTopBtn:{
+        backgroundColor: "#400CCC",
+        position:'fixed',
+        zIndex:'100',
+        bottom:theme.spacing(5), 
+        right:theme.spacing(8),
+        [theme.breakpoints.down('xs')]:{
+            right:theme.spacing(2),
+        }
+    },
     toolbar: {
         display: "flex",
         justifyContent: "space-between",

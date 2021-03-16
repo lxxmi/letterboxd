@@ -4,8 +4,6 @@ export default makeStyles((theme)=>({
     trendingGrid:{
         display:'flex',
         flexWrap:'wrap',
-        alignItems:'stretch',
-        alignContent:'stretch',
         justifyContent:'space-around',
     },
     pageTitle:{

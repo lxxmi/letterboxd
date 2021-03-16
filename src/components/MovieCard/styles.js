@@ -4,16 +4,15 @@ export default makeStyles((theme)=>({
     card:{
         width:200,
         borderRadius:'10px',
-        marginBottom:'10px',
+        margin:'0 4px 10px 4px',
         boxShadow:'5px 5px 8px rgba(0,0,0,0.15) ',
         [theme.breakpoints.down('xs')]: {
             width:'40vw',
         },
     },
     badge:{
-        // paddingLeft:"0px",
         marginLeft:"25px",
-        marginTop:"-10px",
+        marginTop:"-18px",
         borderRadius:'50%',
     },
     cardContent:{

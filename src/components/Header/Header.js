@@ -1,6 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link as RouterLink } from 'react-router-dom';
 import {AppBar,Hidden, Toolbar, Container, Typography, Button} from '@material-ui/core'
+import Fab from '@material-ui/core/Fab';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import {MenuDrawer} from '../MenuDrawer/MenuDrawer'
 import WhatshotIcon from '@material-ui/icons/Whatshot'
 import MovieIcon from '@material-ui/icons/Movie'
@@ -13,7 +15,17 @@ export const Header = () => {
         {label:"Movies", path:"/movies", icon:<MovieIcon/>},
         {label:"TV Shows", path:"/shows", icon:<TvIcon/>},
     ]
-    const {header, logo, navLink, toolbar} = useStyles()
+    const {header, logo, navLink, toolbar, scrollTopBtn} = useStyles()
+    const [showScroll, setShowScroll] = useState(false)
+    const checkScrollTop = () => {    
+       if (!showScroll && window.pageYOffset > 400){
+          setShowScroll(true)    
+       } else if (showScroll && window.pageYOffset <= 400){
+          setShowScroll(false)    
+       }  
+    };
+    window.addEventListener('scroll', checkScrollTop)
+
     return (
         <div>
             <AppBar position="fixed" className={header}>
@@ -36,6 +48,11 @@ export const Header = () => {
                     </Toolbar>
                 </Container>                                
             </AppBar>
+            {showScroll &&
+            <Fab color='primary' size='small' onClick={()=>window.scroll(0,0)} className={scrollTopBtn} aria-label='Scroll back to top'>
+            <ExpandLessIcon />
+        </Fab>
+        }
         </div>
     )
 }
