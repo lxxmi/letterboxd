@@ -1,5 +1,5 @@
 # LetterBoxd
-https://letterboxd.netlify.app/ is a movies app clone built using tmdb api and material ui framework.
+https://letterboxd.netlify.app is a movies app clone built using tmdb api and material ui framework.
 
 ## Available Scripts
 
